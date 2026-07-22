@@ -45,7 +45,7 @@ jobs:
       - name: Checkout CI tooling
         uses: actions/checkout@v4
         with:
-          repository: YourOrg/gh-actions
+          repository: quadtechit/gh-actions
           ref: v1
           path: .ci
           persist-credentials: false
