@@ -1,0 +1,15 @@
+name: Publish scripts to SharePoint
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    uses: quadtechit/gh-actions/.github/workflows/sharepoint-publish.yml@v1
+    with:
+      site_hostname: quadtechit.sharepoint.com
+      site_path: /sites/automations
+      library: Scripts
+      source_dir: scripts
+    secrets: inherit
