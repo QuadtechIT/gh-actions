@@ -16,7 +16,7 @@ on:
       source_dir:
         required: false
         type: string
-        default: "scripts"
+        default: ""
       target_root:
         required: false
         type: string
