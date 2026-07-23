@@ -67,13 +67,19 @@ jobs:
           echo "current=${CURRENT}" >> "$GITHUB_OUTPUT"
           echo "previous=${PREV}"  >> "$GITHUB_OUTPUT"
 
+          SRC="${{ inputs.source_dir }}"
+          if [ -n "$SRC" ]; then
+            PATHSPEC=( -- "$SRC" )
+          else
+            PATHSPEC=( -- . ':(exclude).github/' ':(exclude).ci/' ':(exclude)README.md' ':(exclude).gitignore' )
+          fi
+
           if [ -z "$PREV" ]; then
             echo "No previous tag — treating all tracked files as added."
-            git ls-files -- "${{ inputs.source_dir }}" | sed 's/^/A\t/' > /tmp/changes.tsv
+            git ls-files "${PATHSPEC[@]}" | sed 's/^/A\t/' > /tmp/changes.tsv
           else
             echo "Diffing ${PREV}..${CURRENT}"
-            git diff --name-status --find-renames "${PREV}" "${CURRENT}" \
-              -- "${{ inputs.source_dir }}" > /tmp/changes.tsv
+            git diff --name-status --find-renames "${PREV}" "${CURRENT}" "${PATHSPEC[@]}" > /tmp/changes.tsv
           fi
 
           echo "--- changes ---"
