@@ -71,7 +71,7 @@ jobs:
           if [ -n "$SRC" ]; then
             PATHSPEC=( -- "$SRC" )
           else
-            PATHSPEC=( -- . ':(exclude).github/' ':(exclude).ci/' ':(exclude)README.md' ':(exclude).gitignore' )
+            PATHSPEC=( -- . ':(exclude).github/' ':(exclude).ci/' ':(exclude).gitignore' )
           fi
 
           if [ -z "$PREV" ]; then
