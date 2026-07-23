@@ -85,6 +85,7 @@ jobs:
           AZURE_TENANT_ID:   ${{ vars.AZURE_TENANT_ID }}
           AZURE_CLIENT_ID:   ${{ vars.AZURE_CLIENT_ID }}
           SP_PUBLISHER_CERT: ${{ secrets.SP_PUBLISHER_CERT }}
+          SP_PUBLISHER_CERT_PASSWORD: ${{ secrets.SP_PUBLISHER_CERT_PASSWORD }}
           SITE_HOSTNAME:     ${{ inputs.site_hostname }}
           SITE_PATH:         ${{ inputs.site_path }}
           LIBRARY:           ${{ inputs.library }}
