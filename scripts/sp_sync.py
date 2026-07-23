@@ -141,7 +141,10 @@ def main(changes_file: str):
     print(f"Drive resolved. Publishing {tag} under /{tgt_root}/")
 
     def remote_path(repo_path: str) -> str:
-        rel = repo_path[len(src_root):].lstrip("/") if repo_path.startswith(src_root) else repo_path
+        if src_root and repo_path.startswith(src_root + "/"):
+            rel = repo_path[len(src_root) + 1:]
+        else:
+            rel = repo_path
         return f"{tgt_root}/{rel}"
 
     uploaded = skipped = deleted = 0
