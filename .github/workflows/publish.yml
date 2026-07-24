@@ -9,7 +9,6 @@ jobs:
     uses: quadtechit/gh-actions/.github/workflows/sharepoint-publish.yml@main
     with:
       site_hostname: quadtechit.sharepoint.com
-      site_path: /sites/automations
+      site_path: /sites/Scripts
       library: Scripts
-      source_dir: scripts
     secrets: inherit
